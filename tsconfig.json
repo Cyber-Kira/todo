@@ -17,5 +17,11 @@
 		"jsx": "react-jsx"
 	},
 	"baseUrl": "src/",
-	"include": ["**/*.ts", "**/*.tsx", "src/"]
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"src/",
+		"postcss.config.js",
+		"tailwind.config.js"
+	]
 }
