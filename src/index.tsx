@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { App } from './components'
 import './index.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
 	<React.StrictMode>
-		<div className='text-3xl text-center mt-6 font-bold font-mono'>#todo</div>
+		<App />
 	</React.StrictMode>
 )
