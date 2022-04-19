@@ -26,7 +26,7 @@ export const TotoItem = ({ title }: Props) => {
 			</div>
 			<div className='flex items-center overflow-hidden w-full'>
 				<span
-					className={`relative text-black dark:text-slate-50 w-auto before:absolute before:h-px pl-1 before:w-[calc(100%+5px)] before:bg-black dark:before:bg-white  before:top-[calc(50%-1px)] before:-translate-x-[calc(100%+30px)] ${
+					className={`relative text-black dark:text-slate-50 w-auto before:absolute before:h-px pl-1 before:w-[calc(100%+5px)] before:bg-black dark:before:bg-white  before:top-1/2 before:-translate-x-[calc(100%+30px)] ${
 						done
 							? 'before:translate-x-[calc(-5px)] animate-wiggle before:animate-dimmed'
 							: ''
