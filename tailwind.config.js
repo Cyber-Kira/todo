@@ -35,10 +35,46 @@ module.exports = {
 						backgroundColor: 'rgb(100 116 139)',
 					},
 				},
+				slideIn: {
+					'0%': {
+						transform: 'translateX(0) scale(1)',
+					},
+					'100%': {
+						transform: 'translateX(65%) scale(0.87)',
+					},
+				},
+				slideOut: {
+					'0%': {
+						transform: 'translateX(65%) scale(0.87)',
+					},
+					'100%': {
+						transform: 'translateX(0) scale(1)',
+					},
+				},
+				roundIn: {
+					'0%': {
+						borderRadius: 'rem',
+					},
+					'100%': {
+						borderRadius: '2rem',
+					},
+				},
+				roundOut: {
+					'0%': {
+						borderRadius: '2rem',
+					},
+					'100%': {
+						borderRadius: '0rem',
+					},
+				},
 			},
 			animation: {
 				wiggle: 'wiggle 1s ease-in forwards',
 				dimmed: 'dimmed 1s ease-in forwards',
+				slideIn: 'slideIn .45s ease-in-out forwards',
+				slideOut: 'slideOut .45s ease-in-out forwards',
+				roundIn: 'roundIn .55s ease-in-out forwards',
+				roundOut: 'roundOut .55s ease-in-out forwards',
 			},
 		},
 	},
