@@ -1,3 +1,4 @@
+import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import React, { useState } from 'react'
 import { toggleThemeClass } from '../../utils'
 import { Background } from '../Background'
@@ -20,46 +21,57 @@ export const App = () => {
 	return (
 		<>
 			<div
-				className={`fixed top-0 left-0 w-full h-full ${
+				className={`fixed top-0 left-0 w-screen h-screen ${
 					open ? 'animate-slideIn pointer-events-none' : 'animate-slideOut'
-				} max-w-md mx-auto`}
+				} max-w-md mx-auto overflow-auto`}
 			>
 				<Header toggleMenu={toggleMenu} />
 				<div className='text-black dark:text-white text-3xl px-9 pt-9 font-mono font-semibold leading-10 transition-colors'>
 					What&apos;s up, Kirill!
 				</div>
-				<div className='mt-10 px-9 flex flex-col gap-1'>
-					<p className='text-black dark:text-white text-sm uppercase mb-2'>
-						Inbox
+				<div className='mt-10'>
+					<p className='text-black pl-9 tracking-wider dark:text-white text-sm uppercase'>
+						Categories
 					</p>
-					<div className='relative h-28'>
-						<div className='absolute top-0 left-0 flex gap-3'>
-							<div className='w-44 text-black dark:text-white rounded-3xl bg-purpleDark px-3 py-6 shadow-2xl cursor-pointer'>
-								<p className='mb-1 text-sm text-slate-400'>40 tasks</p>
-								<p className='mb-3 text-xl'>Business</p>
-								<div className='w-full h-1 bg-purpleLight rounded-lg'>
-									<div className='w-1/2 bg-purpleBright h-1 rounded-lg backdrop-brightness-150' />
-								</div>
+					<div className='w-full px-9 py-4 flex gap-3 first:pl-9 last:pr-9 overflow-auto'>
+						<div className='flex justify-center items-center w-44 shrink-0 rounded-3xl bg-white dark:bg-purpleDark cursor-pointer shadow-md'>
+							<div className='text-slate-800 dark:text-white'>
+								<AddRoundedIcon fontSize='large' />
 							</div>
-							<div className='w-44 text-black dark:text-white rounded-3xl bg-purpleDark px-3 py-6 shadow-2xl cursor-pointer'>
-								<p className='mb-1 text-sm text-slate-400'>18 tasks</p>
-								<p className='mb-3 text-xl'>Personal</p>
-								<div className='w-full h-1 bg-purpleLight rounded-lg'>
-									<div className='w-1/2 bg-purpleBright h-1 rounded-lg backdrop-brightness-150' />
-								</div>
+						</div>
+						<div className='flex flex-col gap-3 w-44 shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 shadow-md'>
+							<div className='text-sm mt-2 w-2/6 rounded bg-slate-200 dark:bg-purpleLight h-3 animate-pulse' />
+							<div className='text-xl w-4/6 rounded bg-slate-200 dark:bg-purpleLight h-4 animate-pulse' />
+							<div className='w-full mt-auto h-1 bg-slate-200 dark:bg-purpleLight animate-pulse' />
+						</div>
+						<div className='w-44 shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 cursor-pointer shadow-md'>
+							<p className='mb-1 text-sm text-slate-400'>40 tasks</p>
+							<p className='mb-3 text-xl text-black dark:text-white truncate'>
+								Business
+							</p>
+							<div className='w-full h-1 bg-purpleLight rounded-lg'>
+								<div className='w-2/3 bg-purpleBright h-1 rounded-lg backdrop-brightness-150' />
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className='mt-10 px-9 flex flex-col gap-1'>
-					<p className='text-black dark:text-white text-sm uppercase mb-2'>
+				<div className='mt-6 px-9 flex flex-col h-[calc(100vh-363px)] gap-1'>
+					<p className='text-black tracking-wider dark:text-white text-sm uppercase mb-2'>
 						Inbox
 					</p>
-					<TotoItem title='Daily meeting with team' />
-					<TotoItem title='Pay for rent' />
-					<TotoItem title='Check emails' />
-					<TotoItem title='Lunch with Emma' />
-					<TotoItem title='Meditation' />
+					<div className='flex flex-col gap-1 h-full overflow-auto mb-8 bar'>
+						<TotoItem title='Daily meeting with team' />
+						<TotoItem title='Pay for rent' />
+						<TotoItem title='Check emails' />
+						<TotoItem title='Lunch with Emma' />
+						<TotoItem title='Meditation' />
+						<div className='flex items-center outline-none shadow-sm shrink-0 select-none w-full h-14 dark:text-slate-50 bg-light dark:bg-purpleDark rounded-xl transition-colors pl-3'>
+							<div className='flex items-center justify-center'>
+								<div className='relative animate-pulse inline-block mx-3 w-6 h-6 rounded-full bg-slate-200 dark:bg-purpleLight ' />
+							</div>
+							<div className='w-full mr-10 h-5 rounded animate-pulse bg-slate-200 dark:bg-purpleLight' />
+						</div>
+					</div>
 				</div>
 				<ThemeToggle />
 				<Background
