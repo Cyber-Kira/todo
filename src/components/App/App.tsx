@@ -1,10 +1,14 @@
 import AddRoundedIcon from '@mui/icons-material/AddRounded'
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded'
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
+import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined'
 import React, { useState } from 'react'
 import { toggleThemeClass } from '../../utils'
 import { Background } from '../Background'
 import { Header } from '../Header'
 import { ThemeToggle } from '../ThemeToggle'
 import { TotoItem } from '../TodoItem'
+import image from '../../avatar.png'
 
 // Running this function on first render
 // to remove transition between default
