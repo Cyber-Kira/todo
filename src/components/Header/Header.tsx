@@ -10,7 +10,7 @@ interface Props {
 
 export const Header = ({ toggleMenu }: Props) => {
 	return (
-		<div className='flex gap-3 justify-between items-center mt-6 px-6'>
+		<div className='sticky top-0 bg-lightDimmed dark:bg-purpleLight z-30 flex gap-3 justify-between items-center px-6 py-2'>
 			<button
 				onClick={toggleMenu}
 				type='button'
