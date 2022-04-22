@@ -118,6 +118,9 @@ export const App = () => {
 						</li>
 					</ul>
 				</div>
+				<div className='mt-auto mb-8'>
+					<ThemeToggle />
+				</div>
 			</div>
 			<Background colorLight='bg-purpleDark' colorDark='bg-purpleDark' />
 		</>
