@@ -10,8 +10,6 @@ export const Background = ({
 	rounded?: boolean
 }) => (
 	<div
-		className={`absolute top-0 left-0 bottom-0 ${colorLight} ${colorDark} w-screen -z-10 ${
-			rounded ? 'animate-roundIn' : 'animate-roundOut'
-		}`}
+		className={`fixed inset-0 -bottom-20 ${colorLight} ${colorDark} w-screen -z-10`}
 	/>
 )
