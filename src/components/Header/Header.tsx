@@ -14,7 +14,7 @@ export const Header = ({ toggleMenu }: Props) => {
 			<button
 				onClick={toggleMenu}
 				type='button'
-				className='p-3 text-normalPriority dark:text-menuItemDark pointer-events-auto mr-auto transition-colors'
+				className='p-3 text-normalPriority dark:text-menuItemDark mr-auto transition-colors'
 			>
 				<DragHandleRoundedIcon />
 			</button>
