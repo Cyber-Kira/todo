@@ -77,6 +77,21 @@ export const App = () => {
 				<Background
 					colorLight='bg-lightDimmed'
 					colorDark='dark:bg-purpleLight'
+					/>
+				</div>
+			</div>
+			<div
+				className={`fixed -translate-x-[calc(100%+300px)] top-5 left-0 bottom-0 flex flex-col gap-5 w-3/5 ${
+					open ? 'translate-x-[calc(0px)]' : 'duration-500'
+				} transition ease-in-out duration-[650ms]`}
+			>
+				<button
+					onClick={toggleMenu}
+					className='absolute flex justify-center items-center right-0 w-12 h-12 rounded-full border-2 border-slate-500 border-opacity-25 text-light'
+					type='button'
+				>
+					<ChevronLeftRoundedIcon fontSize='large' />
+				</button>
 				<div className='flex flex-col gap-12 ml-9'>
 					<button
 						className='relative w-24 h-24 mt-12 rounded-full'
