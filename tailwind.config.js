@@ -64,8 +64,6 @@ module.exports = {
 				dimmed: 'dimmed 1s ease-in forwards',
 				slideIn: 'slideIn .45s ease-in-out forwards',
 				slideOut: 'slideOut .45s ease-in-out forwards',
-				roundIn: 'roundIn .55s ease-in-out forwards',
-				roundOut: 'roundOut .55s ease-in-out forwards',
 			},
 		},
 	},
