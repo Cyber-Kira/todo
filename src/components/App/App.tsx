@@ -77,8 +77,47 @@ export const App = () => {
 				<Background
 					colorLight='bg-lightDimmed'
 					colorDark='dark:bg-purpleLight'
-					rounded={open}
-				/>
+				<div className='flex flex-col gap-12 ml-9'>
+					<button
+						className='relative w-24 h-24 mt-12 rounded-full'
+						type='button'
+					>
+						<img
+							className='rounded-full object-cover w-full h-full'
+							src={image}
+							alt='text'
+						/>
+					</button>
+					<p className='text-white text-4xl font-mono'>Kirill Koloskov</p>
+					<ul>
+						<li className='flex items-center'>
+							<div className='inline-block w-6 h-6 mb-1 text-slate-500 border-opa'>
+								<BookmarkBorderOutlinedIcon />
+							</div>
+							{/* Will become router link when i finish with components */}
+							<button
+								type='button'
+								onClick={toggleMenu}
+								className='inline-block text-md font-mono text-lightDimmed ml-1 py-3 pl-4 pr-20'
+							>
+								Categories
+							</button>
+						</li>
+						<li className='flex items-center'>
+							<div className='inline-block w-6 h-6 mb-1 text-slate-500 border-opa'>
+								<AppsOutlinedIcon />
+							</div>
+							{/* Will become router link when i finish with components */}
+							<button
+								type='button'
+								onClick={toggleMenu}
+								className='inline-block text-md font-mono text-lightDimmed ml-1 py-3 pl-4 pr-20'
+							>
+								Analytics
+							</button>
+						</li>
+					</ul>
+				</div>
 			</div>
 			<Background colorLight='bg-purpleDark' colorDark='bg-purpleDark' />
 		</>
