@@ -44,34 +44,18 @@ module.exports = {
 				},
 				slideIn: {
 					'0%': {
-						transform: 'translateX(0) scale(1)',
+						transform: 'translateX(0)',
 					},
 					'100%': {
-						transform: 'translateX(65%) scale(0.87)',
+						transform: 'translateX(75%)',
 					},
 				},
 				slideOut: {
 					'0%': {
-						transform: 'translateX(65%) scale(0.87)',
+						transform: 'translateX(75%)',
 					},
 					'100%': {
-						transform: 'translateX(0) scale(1)',
-					},
-				},
-				roundIn: {
-					'0%': {
-						borderRadius: 'rem',
-					},
-					'100%': {
-						borderRadius: '2rem',
-					},
-				},
-				roundOut: {
-					'0%': {
-						borderRadius: '2rem',
-					},
-					'100%': {
-						borderRadius: '0rem',
+						transform: 'translateX(0)',
 					},
 				},
 			},
