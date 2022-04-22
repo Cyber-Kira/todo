@@ -13,6 +13,8 @@ module.exports = {
 				normalPriority: '#1857C0',
 				menuItemDark: '#97B4FF',
 				menuItemLight: '#6E6EFF',
+				lightToggleRing: '#849de2',
+				darkToggleRing: '#183588',
 			},
 			dropShadow: {
 				categoryCard: '0px 1px 10px 2px rgba(80, 108, 129, 0.15);',
