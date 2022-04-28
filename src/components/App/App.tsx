@@ -2,13 +2,14 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { toggleThemeClass } from '../../utils'
 import { Background } from '../Background'
 import { Header } from '../Header'
 import { ThemeToggle } from '../ThemeToggle'
 import { TotoItem } from '../TodoItem'
 import image from '../../avatar.png'
+import { AddTaskButton } from '../AddTaskButton'
 
 // Running this function on first render
 // to remove transition between default
@@ -40,15 +41,17 @@ export const App = () => {
 	)
 
 	return (
-		<>
+		<AddItemContext.Provider value={menuState}>
 			<div
 				className={`relative h-screen overflow-x-hidden ${
 					open ? 'overflow-y-hidden' : 'overflow-y-auto'
-				}`}
+				} ${overlay ? '-z-50' : ''}`}
 			>
 				<div
-					className={`absolute z-20 inset-0 w-full h-fit ${
-						open ? 'animate-slideIn pointer-events-none' : 'animate-slideOut'
+					className={`absolute z-20 inset-0 w-full h-auto ${
+						open
+							? 'animate-slideIn pointer-events-none h-[1000vh]'
+							: 'animate-slideOut'
 					} max-w-md mx-auto ${firstLoad ? 'animate-none' : ''}`}
 				>
 					<Header toggleMenu={toggleMenu} />
@@ -162,7 +165,8 @@ export const App = () => {
 					<ThemeToggle />
 				</div>
 			</div>
+			<AddTaskButton />
 			<Background colorLight='bg-purpleDark' colorDark='bg-purpleDark' />
-		</>
+		</AddItemContext.Provider>
 	)
 }
