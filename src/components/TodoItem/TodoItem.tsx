@@ -34,14 +34,14 @@ export const TotoItem = ({ title }: Props) => {
 
 	const deletedText = (
 		<div
-			className={`absolute flex justify-between left-0 w-full px-5 items-center text-slate-300 gap-3 font-mono opacity-0 ${
+			className={`absolute flex justify-between left-0 w-full px-5 items-center text-slate-400 dark:text-slate-300 gap-3 font-mono opacity-0 ${
 				isDeleted ? 'opacity-100 duration-700 z-20' : ''
 			} transition-opacity`}
 		>
 			<p>The task was deleted</p>
 			<button
 				onClick={cancelDeletion}
-				className='flex items-center justify-center border-2 border-offset-2 px-3 py-1 rounded-full border-slate-400 uppercase'
+				className='flex items-center justify-center border-2 border-offset-2 px-3 py-1 rounded-full border-slate-300 dark:border-slate-400 uppercase'
 				type='button'
 			>
 				Undo
@@ -51,12 +51,12 @@ export const TotoItem = ({ title }: Props) => {
 
 	return (
 		<div
-			className={`relative flex items-center outline-none shadow-sm shrink-0 select-none min-h-[3.5rem] h-auto rounded-xl transition-all ${
+			className={`relative flex items-center outline-none shrink-0 select-none min-h-[3.5rem] h-auto rounded-xl transition-all ${
 				isHidden ? 'hidden' : ''
 			} `}
 		>
 			<div
-				className={`flex items-center outline-none shadow-sm shrink-0 p-2 select-none w-full min-h-[3.5rem] h-auto dark:text-slate-50 bg-light dark:bg-purpleDark rounded-xl transition-all pl-3 z-10 ${
+				className={`flex items-center outline-none shadow-sm shrink-0 p-2 pr-3 select-none w-full min-h-[3.5rem] h-auto dark:text-slate-50 bg-light dark:bg-purpleDark rounded-xl transition-all pl-3 z-10 ${
 					selected ? 'bg-slate-200 dark:bg-opacity-70' : ''
 				} ${isDeleted ? '-translate-x-full opacity-0 duration-500' : ''}`}
 			>
