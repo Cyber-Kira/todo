@@ -16,6 +16,13 @@ import image from '../../avatar.png'
 // was selected by user
 toggleThemeClass()
 
+interface AddItemInterface {
+	overlay: boolean
+	setOverlay: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const AddItemContext = React.createContext<AddItemInterface | null>(null)
+
 export const App = () => {
 	const [open, setOpen] = useState(false)
 	const [firstLoad, setFirstLoad] = useState(true)
@@ -23,6 +30,14 @@ export const App = () => {
 		setOpen(!open)
 		setFirstLoad(false)
 	}
+	const [overlay, setOverlay] = useState(false)
+	const menuState = useMemo<AddItemInterface>(
+		() => ({
+			overlay,
+			setOverlay,
+		}),
+		[overlay]
+	)
 
 	return (
 		<>
