@@ -45,7 +45,7 @@ export const App = () => {
 			<div
 				className={`relative h-screen overflow-x-hidden ${
 					open ? 'overflow-y-hidden' : 'overflow-y-auto'
-				} ${overlay ? '-z-50' : ''}`}
+				} ${overlay ? '-z-10' : ''}`}
 			>
 				<div
 					className={`absolute z-20 inset-0 w-full h-auto ${
