@@ -1,4 +1,3 @@
-import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined'
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined'
@@ -10,6 +9,7 @@ import { ThemeToggle } from '../ThemeToggle'
 import { TotoItem } from '../TodoItem'
 import image from '../../avatar.png'
 import { AddTaskButton } from '../AddTaskButton'
+import { Categories } from '../Categories'
 
 // Running this function on first render
 // to remove transition between default
@@ -40,6 +40,19 @@ export const App = () => {
 		[overlay]
 	)
 
+	const categories = [
+		{
+			title: 'School',
+			tasks: ['Go to school'],
+			completedTasks: ['Do homework'],
+		},
+		{
+			title: 'Work',
+			tasks: ['Go to work', 'Clear the desk', 'Learn Postgresql'],
+			completedTasks: ['Create a prototype', 'Refactor components'],
+		},
+	]
+
 	return (
 		<AddItemContext.Provider value={menuState}>
 			<div
@@ -58,49 +71,11 @@ export const App = () => {
 					<div className='text-black dark:text-white text-3xl px-9 pt-9 font-mono font-semibold leading-10 transition-colors'>
 						What&apos;s up, Kirill!
 					</div>
-					<div className='mt-10'>
-						<p className='text-black pl-9 tracking-wider dark:text-white text-sm uppercase'>
-							Categories
-						</p>
-						<div className='w-full snap-x px-9 py-4 flex gap-3 first:pl-9 last:pr-9 overflow-auto'>
-							<div className='flex snap-center justify-center items-center w-44 shrink-0 rounded-3xl bg-white dark:bg-purpleDark cursor-pointer shadow-md'>
-								<div className='text-slate-800 dark:text-white'>
-									<AddRoundedIcon fontSize='large' />
-								</div>
-							</div>
-							<div className='flex snap-center flex-col gap-3 w-44 shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 shadow-md'>
-								<div className='text-sm mt-2 w-2/6 rounded bg-slate-200 dark:bg-purpleLight h-3 animate-pulse' />
-								<div className='text-xl w-4/6 rounded bg-slate-200 dark:bg-purpleLight h-4 animate-pulse' />
-								<div className='w-full mt-auto h-1 bg-slate-200 dark:bg-purpleLight animate-pulse' />
-							</div>
-							<div className='w-44 snap-center shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 cursor-pointer shadow-md'>
-								<p className='mb-1 text-sm text-slate-400'>40 tasks</p>
-								<p className='mb-3 text-xl text-black dark:text-white truncate'>
-									Business
-								</p>
-								<div className='w-full h-1 bg-purpleLight rounded-lg'>
-									<div className='w-2/3 bg-purpleBright h-1 rounded-lg backdrop-brightness-150' />
-								</div>
-							</div>
-						</div>
-					</div>
+					<Categories categories={categories} />
 					<div className='mt-6 px-9 flex flex-col gap-1'>
 						<p className='text-black tracking-wider dark:text-white text-sm uppercase mb-2'>
 							Inbox
 						</p>
-						<div className='flex flex-col gap-1 h-full mb-8'>
-							<TotoItem title='Daily meeting with team' />
-							<TotoItem title='Pay for rent' />
-							<TotoItem title='Check emails' />
-							<TotoItem title='Lunch with Emma' />
-							<TotoItem title='Meditation' />
-							<div className='flex items-center outline-none shadow-sm shrink-0 select-none w-full h-14 dark:text-slate-50 bg-light dark:bg-purpleDark rounded-xl transition-colors pl-3'>
-								<div className='flex items-center justify-center'>
-									<div className='relative animate-pulse inline-block mx-3 w-6 h-6 rounded-full bg-slate-200 dark:bg-purpleLight ' />
-								</div>
-								<div className='w-full mr-10 h-5 rounded animate-pulse bg-slate-200 dark:bg-purpleLight' />
-							</div>
-						</div>
 					</div>
 					<Background
 						colorLight='bg-lightDimmed'
