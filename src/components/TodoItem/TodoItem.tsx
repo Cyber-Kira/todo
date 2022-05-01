@@ -34,8 +34,8 @@ export const TotoItem = ({ title }: Props) => {
 
 	const deletedText = (
 		<div
-			className={`absolute flex justify-between left-0 w-full px-5 items-center text-slate-400 dark:text-slate-300 gap-3 font-mono opacity-0 ${
-				isDeleted ? 'opacity-100 duration-700 z-20' : ''
+			className={`absolute flex justify-between left-0 w-full px-5 items-center text-slate-400 dark:text-slate-300 gap-3 font-mono ${
+				isDeleted ? 'opacity-100 duration-700 z-20' : 'opacity-0'
 			} transition-opacity`}
 		>
 			<p>The task was deleted</p>
