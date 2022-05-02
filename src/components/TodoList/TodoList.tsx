@@ -3,7 +3,7 @@ import React from 'react'
 import { TotoItem } from '../TodoItem'
 
 interface TodoItemInterface {
-	id: number
+	id: string
 	title: string
 }
 
@@ -16,9 +16,7 @@ export const TodoList = ({ todoItems }: TodoListInterface) => {
 		<div className='flex flex-col gap-1 h-full mb-8'>
 			{todoItems.map(todoItem => {
 				return (
-					<div key={todoItem.id}>
-						<TotoItem title={todoItem.title} />
-					</div>
+					<TotoItem key={todoItem.id} id={todoItem.id} title={todoItem.title} />
 				)
 			})}
 		</div>
