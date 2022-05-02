@@ -1,4 +1,4 @@
-export const toggleThemeClass = () => {
+const toggleThemeClass = () => {
 	if (
 		localStorage.theme === 'dark' ||
 		(!('theme' in localStorage) &&
@@ -9,3 +9,7 @@ export const toggleThemeClass = () => {
 		document.documentElement.classList.remove('dark')
 	}
 }
+
+const generateRandomId = () => Math.random().toString(16).slice(2)
+
+export { toggleThemeClass, generateRandomId }
