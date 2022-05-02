@@ -1,17 +1,19 @@
 /* eslint-disable arrow-body-style */
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
 import { TodoToggle } from '../TodoToggle'
+import { AddItemContext } from '../App'
 
 interface Props {
 	title: string
+	id: string
 }
 
-export const TotoItem = ({ title }: Props) => {
+export const TotoItem = ({ title, id }: Props) => {
+	const AddTaskCtx = useContext(AddItemContext)
 	const [done, setDone] = useState(false)
 	const [selected, setSelected] = useState(false)
 	const [isDeleted, setDeleted] = useState(false)
-	const [isHidden, setHidden] = useState(false)
 	const timeoutRef = React.useRef<null | number>(null)
 	const toggleDone = () => {
 		setDone(!done)
@@ -23,7 +25,9 @@ export const TotoItem = ({ title }: Props) => {
 	const handleDelete = () => {
 		setDeleted(true)
 		timeoutRef.current = window.setTimeout(() => {
-			setHidden(true)
+			AddTaskCtx?.setTodoCollection(prevState =>
+				prevState.filter(todoItem => todoItem.id !== id)
+			)
 		}, 3000)
 	}
 
@@ -50,11 +54,7 @@ export const TotoItem = ({ title }: Props) => {
 	)
 
 	return (
-		<div
-			className={`relative flex items-center outline-none shrink-0 select-none min-h-[3.5rem] h-auto rounded-xl transition-all ${
-				isHidden ? 'hidden' : ''
-			} `}
-		>
+		<div className='relative flex items-center outline-none shrink-0 select-none min-h-[3.5rem] h-auto rounded-xl transition-all'>
 			<div
 				className={`flex items-center outline-none shadow-sm shrink-0 p-2 pr-3 select-none w-full min-h-[3.5rem] h-auto dark:text-slate-50 bg-light dark:bg-purpleDark rounded-xl transition-all pl-3 z-10 ${
 					selected ? 'bg-slate-200 dark:bg-opacity-70' : ''
