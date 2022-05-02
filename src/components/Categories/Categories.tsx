@@ -3,6 +3,7 @@ import React from 'react'
 import { CategorySkeleton } from './components/CategorySkeleton'
 
 interface CategoryInterface {
+	id: number
 	title?: string
 	tasks: string[]
 	completedTasks: string[]
@@ -34,7 +35,10 @@ export const Categories = ({
 					const allTasks = numberOfTasks + numberOfCompletedTasks
 					const progress = (numberOfCompletedTasks / allTasks) * 100
 					return (
-						<div className='w-44 snap-center shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 cursor-pointer shadow-md'>
+						<div
+							key={category.id}
+							className='w-44 snap-center shrink-0 rounded-3xl bg-white dark:bg-purpleDark px-3 py-6 cursor-pointer shadow-md'
+						>
 							<p className='mb-1 text-sm text-slate-400'>
 								{tasks.length} {tasks.length > 1 ? `tasks` : `task`}
 							</p>

@@ -38,11 +38,13 @@ export const App = () => {
 
 	const categories = [
 		{
+			id: 1,
 			title: 'School',
 			tasks: ['Go to school'],
 			completedTasks: ['Do homework'],
 		},
 		{
+			id: 2,
 			title: 'Work',
 			tasks: ['Go to work', 'Clear the desk', 'Learn Postgresql'],
 			completedTasks: ['Create a prototype', 'Refactor components'],
