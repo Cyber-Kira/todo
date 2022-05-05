@@ -7,16 +7,31 @@ import { AddItemContext } from '../App'
 interface Props {
 	title: string
 	id: string
+	isCompleted: boolean
 }
 
-export const TotoItem = ({ title, id }: Props) => {
+export const TotoItem = ({ title, id, isCompleted }: Props) => {
 	const AddTaskCtx = useContext(AddItemContext)
-	const [done, setDone] = useState(false)
+	const [done, setDone] = useState(isCompleted)
 	const [selected, setSelected] = useState(false)
 	const [isDeleted, setDeleted] = useState(false)
 	const timeoutRef = React.useRef<null | number>(null)
 	const toggleDone = () => {
 		setDone(!done)
+		AddTaskCtx?.setTodoCollection(prevState => {
+			const item = prevState.filter(todoItem => todoItem.id === id)[0]
+			item.isCompleted = !done
+
+			const itemIndex = prevState.findIndex(todoItem => todoItem.id === id)
+			const itemsBefore = prevState.slice(0, itemIndex)
+			const itemsAfter = prevState.slice(itemIndex + 1)
+			const newTodoCollection = [...itemsBefore, item, ...itemsAfter]
+			window.localStorage.setItem(
+				'todoCollection',
+				JSON.stringify(newTodoCollection)
+			)
+			return newTodoCollection
+		})
 	}
 	const toggleSelected = () => {
 		setSelected(!selected)
@@ -25,9 +40,16 @@ export const TotoItem = ({ title, id }: Props) => {
 	const handleDelete = () => {
 		setDeleted(true)
 		timeoutRef.current = window.setTimeout(() => {
-			AddTaskCtx?.setTodoCollection(prevState =>
-				prevState.filter(todoItem => todoItem.id !== id)
-			)
+			AddTaskCtx?.setTodoCollection(prevState => {
+				const newTodoCollection = prevState.filter(
+					todoItem => todoItem.id !== id
+				)
+				window.localStorage.setItem(
+					'todoCollection',
+					JSON.stringify(newTodoCollection)
+				)
+				return newTodoCollection
+			})
 		}, 3000)
 	}
 
@@ -61,7 +83,11 @@ export const TotoItem = ({ title, id }: Props) => {
 				} ${isDeleted ? '-translate-x-full opacity-0 duration-500' : ''}`}
 			>
 				<div className='flex items-center justify-center'>
-					<TodoToggle toggleDone={toggleDone} toggleSelected={toggleSelected} />
+					<TodoToggle
+						toggleDone={toggleDone}
+						done={isCompleted}
+						toggleSelected={toggleSelected}
+					/>
 				</div>
 				<div className='flex items-center justify-between overflow-hidden w-full'>
 					<span
