@@ -10,13 +10,31 @@ export const AddTaskOverlay = () => {
 	const [value, setValue] = useState<TodoItemInterface>({
 		id: '',
 		title: '',
+		isCompleted: false,
+		category: '',
 	})
 
 	const setTodo = () => {
 		if (value !== undefined) {
-			AddTaskCtx?.setTodoCollection(prevState => [...prevState, value])
+			if (value.category === '') {
+				setValue(prevValue => {
+					return {
+						id: prevValue.id,
+						title: prevValue.title,
+						isCompleted: prevValue.isCompleted,
+						category: 'all',
+					}
+				})
+			}
+			AddTaskCtx?.setTodoCollection(prevState => {
+				window.localStorage.setItem(
+					'todoCollection',
+					JSON.stringify([value, ...prevState])
+				)
+				return [value, ...prevState]
+			})
 		}
-		setValue({ id: '', title: '' })
+		setValue({ id: '', title: '', isCompleted: false, category: '' })
 		AddTaskCtx?.setOverlay(false)
 	}
 
@@ -24,6 +42,17 @@ export const AddTaskOverlay = () => {
 		setValue({
 			id: generateRandomId(),
 			title: e.target.value,
+			isCompleted: false,
+			category: '',
+		})
+	}
+
+	const setCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setValue(prevValue => {
+			return {
+				...prevValue,
+				category: e.target.value,
+			}
 		})
 	}
 
@@ -46,23 +75,45 @@ export const AddTaskOverlay = () => {
 					<CloseIcon />
 				</button>
 			</div>
-			<input
-				onChange={e => handleChange(e)}
-				value={value.title}
-				className={`bg-transparent h-12 indent-2 ${
-					AddTaskCtx?.overlay ? 'translate-y-0' : '-translate-y-4'
-				} transition-transform delay-150 duration-700`}
-				type='text'
-				name='taskName'
-				placeholder='Enter new task'
-			/>
+			<div className='flex flex-col gap-4'>
+				<input
+					onChange={e => handleChange(e)}
+					value={value.title}
+					className={`bg-transparent h-12 indent-2 ${
+						AddTaskCtx?.overlay ? 'translate-y-0' : '-translate-y-4'
+					} transition-transform delay-150 duration-700 lg:w-96 self-end`}
+					type='text'
+					name='taskName'
+					placeholder='Enter new task'
+				/>
+				<label
+					className={`${
+						AddTaskCtx?.overlay
+							? 'translate-y-0 opacity-100'
+							: '-translate-y-8 opacity-0'
+					} transition-all delay-300 duration-700 lg:w-96 self-end`}
+					htmlFor='categoryName'
+				>
+					Category:
+					<input
+						onChange={e => setCategory(e)}
+						value={value.category}
+						className={`bg-slate-50 border-x border-y ml-7 h-12 indent-2 ${
+							AddTaskCtx?.overlay ? 'translate-y-0' : '-translate-y-4'
+						} transition-transform delay-150 duration-700`}
+						type='text'
+						name='categoryName'
+						placeholder='Enter a category'
+					/>
+				</label>
+			</div>
 			<button
 				onClick={setTodo}
 				className={`flex gap-1 justify-center items-center bg-menuItemLight w-1/2 h-12 self-end rounded-full text-white ${
 					AddTaskCtx?.overlay
 						? 'translate-y-0 opacity-100'
 						: '-translate-y-8 opacity-0'
-				} transition-all delay-300 duration-700`}
+				} transition-all delay-300 duration-700 lg:w-48`}
 				type='button'
 			>
 				New task
