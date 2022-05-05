@@ -7,5 +7,7 @@ export const Background = ({
 	colorLight: string
 	colorDark: string
 }) => (
-	<div className={`fixed inset-0 ${colorLight} ${colorDark} w-screen -z-50`} />
+	<div
+		className={`fixed inset-0 ${colorLight} ${colorDark} w-screen -z-50 -bottom-32`}
+	/>
 )
