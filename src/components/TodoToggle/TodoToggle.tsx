@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 export const TodoToggle = ({
 	toggleDone,
 	toggleSelected,
+	done,
 }: {
 	toggleDone: () => void
 	toggleSelected: () => void
+	done: boolean
 }) => {
-	const [clicked, setClicked] = useState(false)
+	const [clicked, setClicked] = useState(done)
 	const handleClick = () => {
 		setClicked(!clicked)
 		toggleDone()
