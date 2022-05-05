@@ -3,7 +3,7 @@ import React from 'react'
 import { CategorySkeleton } from './components/CategorySkeleton'
 
 interface CategoryInterface {
-	id: number
+	id: string
 	title?: string
 	tasks: string[]
 	completedTasks: string[]
